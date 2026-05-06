@@ -1,0 +1,9 @@
+from(bucket: "Project-MicroWith-InfluxDB")
+  |> range(start: v.timeRangeStart)
+  |> filter(fn: (r) => r._measurement == "sensor_data")
+  |> filter(fn: (r) => 
+    r._field == "DHT22_Temp" or 
+    r._field == "ESP32_Tempp" or 
+    r._field == "DHT22_Humid" or 
+    r._field == "Rotary_Angle"
+  )
